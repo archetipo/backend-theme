@@ -5,7 +5,7 @@
 {
     "name": "Community Backend Theme",
     "summary": "Odoo 10.0 Community Backend Theme (based on Openworx Theme)",
-    "version": "10.0.1.0.0",
+    "version": "9.0.1.0.0",
     "category": "Themes/Backend",
     "website": "http://odooabc.com",
 	"description": """
@@ -25,4 +25,3 @@
         'views/web.xml',
     ],
 }
-

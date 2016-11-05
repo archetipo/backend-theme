@@ -5,14 +5,13 @@
     License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl.html).
 -->
 
-<odoo>
+<openerp>
+    <data>
 
-    <template id="webclient_bootstrap"
+    <template id="webwebclient_bootstrap"
               inherit_id="web.webclient_bootstrap"
               name="App Drawer - Web Client"
               >
-
-        <xpath expr="//div[@class='o_sub_menu']" position="replace" />
 
         <xpath expr="//t[@t-set='head']" position="inside">
             <meta charset="utf-8" />
@@ -29,7 +28,7 @@
 
             <header role="banner">
                 <nav id="odooAppDrawer" class="app-drawer-nav drawer-nav" role="navigation">
-                    <t t-call="web.menu" />
+                    <t t-call="web.menu"/>
                 </nav>
 
                 <nav class="navbar navbar-default main-nav"
@@ -92,25 +91,27 @@
             </header>
 
         </xpath>
-
+        <xpath expr="//div[@class='openerp openerp_webclient_container oe_webclient']" position="replace">
+            <div class="openerp openerp_webclient_container oe_webclient">
+                <div class="oe_application"/>
+            </div>
+        </xpath>
     </template>
 
     <template id="menu_secondary"
               inherit_id="web.menu_secondary"
               name="App Drawer - Secondary Menu"
               >
+      <xpath expr="//a[@class='oe_logo']" position="replace" />
 
-        <xpath expr="//a[@class='o_sub_menu_logo']" position="replace" />
+      <xpath expr="//div[@class='oe_footer']" position="replace" />
 
-        <xpath expr="//div[@class='o_sub_menu_footer']" position="replace" />
-
-        <xpath expr="//div[@class='o_sub_menu_content']/t" position="replace">
-
+      <xpath expr="//div[@class='oe_secondary_menus_container']/t" position="replace">
             <t t-foreach="menu_data['children']" t-as="menu">
 			    <ul style="display: none" class="oe_secondary_menu nav navbar-nav" t-att-data-menu-parent="menu['id']">
 				<li class="app-name">
 					<span class="oe_menu_text">
-						<t t-esc="menu['name']"/> 
+						<t t-esc="menu['name']"/>
 					</span>
 				</li>
 				<li>
@@ -118,8 +119,7 @@
 				</li>
                 </ul>
             </t>
-
-        </xpath>
+      </xpath>
 
     </template>
 
@@ -128,8 +128,7 @@
               name="App Drawer - Secondary Submenu"
               >
 
-        <xpath expr="//ul" position="replace">
-
+      <xpath expr="//ul" position="replace">
             <t t-foreach="menu['children']" t-as="menu">
                 <t t-if="menu['children']">
                     <li t-attf-class="{{ 'dropdown-header' if submenu else '' }}">
@@ -167,8 +166,7 @@
                 </t>
             </t>
 
-        </xpath>
-
+      </xpath>
     </template>
 
     <template id="menu_link"
@@ -238,5 +236,5 @@
             </div>
         </xpath>
     </template>
-
-</odoo>
+</data>
+</openerp>
